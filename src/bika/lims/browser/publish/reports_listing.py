@@ -69,6 +69,10 @@ class ReportsListingView(ListingView):
             ("Info", {
                 "title": "",
                 "toggle": True},),
+            ("ReportNumber", {
+                "title": _("Report No.")},),
+            ("Revision", {
+                "title": _("Rev.")},),
             ("AnalysisRequest", {
                 "title": _("Primary Sample"),
                 "index": "sortable_title"},),
@@ -210,7 +214,18 @@ class ReportsListingView(ListingView):
         review_state = api.get_workflow_status_of(sample)
         status_title = review_state.capitalize().replace("_", " ")
         send_log = obj.getSendLog()
+        
+        report_number = obj.getField('report_number').get(obj) if obj.getField('report_number') else ""
+        report_revision = obj.getField('report_revision').get(obj) if obj.getField('report_revision') else "00"
+        
+        # Atribuir valores para as colunas
+        item["ReportNumber"] = report_number
+        item["Revision"] = report_revision
 
+        # Se houver número, cria o link para o objeto do relatório
+        if report_number:
+            item["replace"]["ReportNumber"] = get_link(obj.absolute_url(), value=report_number)
+            
         # Report Info Popup
         # see: bika.lims.site.coffee for the attached event handler
         item["Info"] = get_link(
@@ -287,3 +302,4 @@ class ReportsListingView(ListingView):
             link = get_email_link(to_utf8(address), value=to_utf8(name))
             out.append(link)
         return ", ".join(sorted(out))
+        
