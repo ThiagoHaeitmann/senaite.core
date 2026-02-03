@@ -887,6 +887,23 @@ schema = BikaSchema.copy() + Schema((
         )
     ),
 
+    StringField(
+        'LotClient',
+        mode="rw",
+        read_permission=View,
+        write_permission=FieldEditEnvironmentalConditions,
+        widget=StringWidget(
+            label=_("Lote da Amostra (Cliente)"),
+            description=_("Insira o lote de fabricação da amostra que consta na etiqueta ou carta de encaminhamento"),
+            visible={
+                'add': 'edit',
+                'header_table': 'prominent',
+            },
+            render_own_label=True,
+            size=20,
+        ),
+    ),
+
     UIDReferenceField(
         "SampleCondition",
         allowed_types=("SampleCondition",),
@@ -1075,6 +1092,21 @@ schema = BikaSchema.copy() + Schema((
             label=_("Date Sample Received"),
             show_time=True,
             description=_("The date when the sample was received"),
+            render_own_label=True,
+        ),
+    ),
+
+    DateTimeField(
+        'DateExpiration',
+        mode="rw",
+        min="DateSampled",
+        max="current",
+        read_permission=View,
+        write_permission=FieldEditDateReceived,
+        widget=DateTimeWidget(
+            label=_("Data de Validade da Amostra"),
+            show_time=True,
+            description=_("Insira a data de validade da amostra localizada na etiqueta/carta de encaminhamento"),
             render_own_label=True,
         ),
     ),
@@ -1387,6 +1419,38 @@ schema = BikaSchema.copy() + Schema((
             description=_("Mark the sample for internal use only. This means "
                           "it is only accessible to lab personnel and not to "
                           "clients."),
+            format="radio",
+            render_own_label=True,
+            visible={'add': 'edit'}
+        ),
+    ),
+
+    BooleanField(
+        "unicSample",
+        mode="rw",
+        required=0,
+        default=False,
+        read_permission=View,
+        write_permission=FieldEditInternalUse,
+        widget=BooleanWidget(
+            label=_("Amostra única?"),
+            description=_("Marque esta opção se é amostra única."),
+            format="radio",
+            render_own_label=True,
+            visible={'add': 'edit'}
+        ),
+    ),
+
+    BooleanField(
+        "destinationSample",
+        mode="rw",
+        required=0,
+        default=False,
+        read_permission=View,
+        write_permission=FieldEditInternalUse,
+        widget=BooleanWidget(
+            label=_("Devolução das amostras?"),
+            description=_("Marque esta opção se a amostra deve ser devolvida no final das análises. Caso esteja desmarcada o fluxo é retenção e descarte."),
             format="radio",
             render_own_label=True,
             visible={'add': 'edit'}
