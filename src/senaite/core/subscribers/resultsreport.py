@@ -9,6 +9,19 @@ from senaite.core.interfaces import IResultsReport
 from senaite.core import logger
 
 
+def generate_report_number():
+    registry = getUtility(IRegistry)
+
+    year = datetime.now().year
+    prefix = registry.get("senaite.impress.reports.prefix", u"CTA")
+    key = "senaite.impress.reports.count.%s" % year
+
+    current = registry.get(key, 0) + 1
+    registry[key] = current
+
+    return u"{}-{}-{:06d}".format(prefix, year, current)
+
+
 @adapter(IResultsReport, IAfterTransitionEvent)
 def resultsreport_after_publish(report, event):
     # Só no publish
