@@ -54,15 +54,15 @@ schema = Person.schema.copy() + atapi.Schema((
         widget=ReferenceWidget(
             label=_(
                 "label_contact_cccontact",
-                default="Contacts to CC"),
+                default="Contatos para CC"),
             description=_(
                 "description_contact_cccontact",
-                default="Contacts in CC for new samples"),
+                default="Contatos em CC para novas Amostras"),
             catalog=CONTACT_CATALOG,
             query="get_widget_cccontact_query",
             columns=[
-                {"name": "getFullname", "label": _("Name")},
-                {"name": "getEmailAddress", "label": _("Email")},
+                {"name": "getFullname", "label": _("Nome")},
+                {"name": "getEmailAddress", "label": _("E-mail")},
             ],
         )),
 ))
