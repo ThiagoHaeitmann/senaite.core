@@ -19,45 +19,45 @@
 
   <table cellpadding="0" cellspacing="0" class="info-container">
     <tr>
-      <th i18n:translate="">ID Amostra</th>
+      <th i18n:translate="">ID Amostra:</th>
       <td><strong tal:content="string:${sample_id}"/></td>
-      <th i18n:translate="">Perigo</th>
+      <th i18n:translate="">Perigo:</th>
       <td tal:content="hazardous"/>
     </tr>
     <tr>
-      <th i18n:translate="">Dt. Amostr.</th>
+      <th i18n:translate="">Dt. Amostr.:</th>
       <td tal:content="date_sampled"/>
-      <th i18n:translate="">Amostragem</th>
+      <th i18n:translate="">Amostr.:</th>
       <td tal:content="sample_point"/>
     </tr>
     <tr>
-      <th i18n:translate="">Nome Amostra</th>
+      <th i18n:translate="">Nome:</th>
       <td tal:content="client_sample_id"/>
-      <th i18n:translate="">Orçamento</th>
+      <th i18n:translate="">Orçamento:</th>
       <td tal:content="client_order_num"/>
     </tr>
     <tr>
-      <th i18n:translate="">Tipo</th>
+      <th i18n:translate="">Tipo:</th>
       <td tal:content="sample_type"/>
-      <th i18n:translate="">Cond. Amb.</th>
+      <th i18n:translate="">Cond. Amb.:</th>
       <td tal:content="preservation"/>
     </tr>
     <tr>
-      <th i18n:translate="">Lote Cli.</th>
+      <th i18n:translate="">Lote Cli.:</th>
       <td tal:content="client_lot"/>
-      <th i18n:translate="">Lote Interno</th>
+      <th i18n:translate="">Lote Int.:</th>
       <td tal:content="internal_batch"/>
     </tr>
     <tr>
-      <th i18n:translate="">Validade</th>
+      <th i18n:translate="">Val.:</th>
       <td tal:content="date_expiration"/>
-      <th i18n:translate="">Fabricação</th>
+      <th i18n:translate="">Fab.:</th>
       <td tal:content="date_manufactured"/>
     </tr>
     <tr>
-      <th i18n:translate="">Devolução</th>
+      <th i18n:translate="">Devolução:</th>
       <td tal:content="destination"/>
-      <th i18n:translate="">Única?</th>
+      <th i18n:translate="">Am. Única:</th>
       <td tal:content="unicSample"/>
     </tr>
     
