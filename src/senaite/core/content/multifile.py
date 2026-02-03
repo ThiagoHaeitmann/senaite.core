@@ -38,7 +38,7 @@ class IMultifileSchema(model.Schema):
     document_id = schema.TextLine(
         title=_(
             u"label_multifile_document_id",
-            default=u"Document ID"
+            default=u"ID do Documento"
         ),
         required=True,
     )
@@ -46,11 +46,11 @@ class IMultifileSchema(model.Schema):
     file = NamedBlobFile(
         title=_(
             u"label_multifile_file",
-            default=u"Document"
+            default=u"Documento"
         ),
         description=_(
             u"description_multifile_file",
-            default=u"File upload"
+            default=u"Upload de Arquivo"
         ),
         required=True,
     )
@@ -58,7 +58,7 @@ class IMultifileSchema(model.Schema):
     document_version = schema.TextLine(
         title=_(
             u"label_multifile_document_version",
-            default=u"Document Version"
+            default=u"Versão do Documento"
         ),
         required=False,
     )
@@ -66,11 +66,11 @@ class IMultifileSchema(model.Schema):
     document_location = schema.TextLine(
         title=_(
             u"label_multifile_document_location",
-            default=u"Document Location"
+            default=u"Local do Documento"
         ),
         description=_(
             u"description_multifile_document_location",
-            default=u"Location where the document set is shelved"
+            default=u"Localização de onde este docuemnto é controlado formalmente (Ex.: LIMS, ERP, ou outra ferramenta ofcial, ou lugar físico - caso seja Scanner)"
         ),
         required=False,
     )
@@ -78,12 +78,11 @@ class IMultifileSchema(model.Schema):
     document_type = schema.TextLine(
         title=_(
             u"label_multifile_document_type",
-            default=u"Document Type"
+            default=u"Tipo do Documento"
         ),
         description=_(
             u"description_multifile_document_type",
-            default=u"Type of document (e.g. user manual, instrument "
-                    u"specifications, image, ...)"
+            default=u"Tipo do Documento (ex.: Manual, NF, Foto, Garantia, Contrato, ...) "
         ),
         required=True,
     )
