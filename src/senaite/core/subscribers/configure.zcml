@@ -59,7 +59,7 @@
   <subscriber
     for="senaite.core.interfaces.IResultsReport
          Products.DCWorkflow.interfaces.IAfterTransitionEvent"
-    handler=".subscribers.resultsreport.resultsreport_after_publish"
+    handler=".resultsreport.resultsreport_after_publish"
   />
 
 </configure>
