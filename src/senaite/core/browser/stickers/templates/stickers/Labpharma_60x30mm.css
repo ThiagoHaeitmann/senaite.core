@@ -1,70 +1,64 @@
-/* Sticker Dimensions: 60mm x 30mm 
-Ajustado para modo Landscape
-*/
-
+/* Sticker Dimensions: 60mm x 30mm */
 .sticker {
     margin: 0 auto;
-    padding: 0.5mm; /* Reduzido para ganhar espaço útil */
-    width: 59mm;    /* 60mm - margens */
-    height: 29mm;   /* 30mm - margens */
+    padding: 1mm; 
+    width: 60mm;
+    height: 30mm;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 6.5pt; /* Reduzido levemente para caber as 8 linhas */
-    text-align: center;
     overflow: hidden;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Container da Tabela de Informações */
+/* Tabela de Informações (Corpo) */
 table.info-container {
     width: 100%;
-    height: auto; /* Deixa o conteúdo ditar a altura, limitado pelo sticker */
     border-collapse: collapse;
-    table-layout: fixed; /* Força o respeito às larguras de coluna */
+    table-layout: fixed;
+    /* Deixa espaço para o rodapé embaixo */
+    margin-bottom: 1mm;
 }
 
 table.info-container th {
     text-align: left;
     font-weight: bold;
-    border: 0.2pt solid #ccc;
-    padding: 0.3mm 0.5mm;
-    width: 25%; /* Ajuste proporcional para rótulos */
+    border: 0.1pt solid #ccc;
+    padding: 0.2mm 0.5mm;
+    width: 20%; /* Rótulos menores para sobrar espaço para o dado */
+    font-size: 5pt;
     white-space: nowrap;
-    overflow: hidden;
 }
 
 table.info-container td {
-    border: 0.2pt solid #ccc;
-    padding: 0.3mm 0.5mm;
-    text-align: left;
-    word-wrap: break-word;
-    font-size: 6pt;
+    border: 0.1pt solid #ccc;
+    padding: 0.2mm 0.5mm;
+    font-size: 5.5pt;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Corta texto longo com ... */
 }
 
-table.info-container td, table.info-container th {
-    line-height: 0.9; /* Compacta as linhas verticalmente */
-}
-
-/* Rodapé com Logo, Barcode e QR */
+/* Rodapé Técnico (Logo, Barcode, QR) */
 .footer-container {
-    border: none !important;
-    padding-top: 1mm !important;
-    vertical-align: bottom;
+    width: 100%;
+    height: 8mm; /* Altura fixa para garantir que caiba nos 30mm */
+    margin-top: auto; /* Empurra para o final do sticker */
 }
 
 .footer-container table {
     width: 100%;
+    height: 100%;
     border: none !important;
 }
 
-.footer-container td {
-    border: none !important;
-    vertical-align: middle !important;
-    padding: 0 !important;
+.logo-img {
+    max-height: 6mm; /* Trava a logo para não crescer demais */
+    width: auto;
 }
 
-.barcode {
-    margin: 0 auto;
-    width: 90%;
+.barcode-wrapper {
+    text-align: center;
 }
 
 /* Configuração de Impressão */
@@ -72,11 +66,5 @@ table.info-container td, table.info-container th {
     @page {
         size: 60mm 30mm;
         margin: 0;
-    }
-    html, body {
-        width: 60mm;
-        height: 30mm;
-        margin: 0;
-        padding: 0;
     }
 }
