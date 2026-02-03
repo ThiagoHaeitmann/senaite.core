@@ -51,10 +51,15 @@
          senaite.core.events.attachments.IAttachmentsDeletedEvent"
     handler=".client.on_attachments_deleted"/>
 
-  <!-- Senaite Setup *modified* event handler -->
-  <subscriber
+<subscriber
     for="senaite.core.interfaces.ISetup
          zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".senaite_setup.on_senaite_setup_modified"/>
+
+  <subscriber
+    for="senaite.core.interfaces.IResultsReport
+         Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+    handler=".subscribers.resultsreport.resultsreport_after_publish"
+  />
 
 </configure>
