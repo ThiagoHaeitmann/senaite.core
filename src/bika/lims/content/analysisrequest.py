@@ -1099,8 +1099,6 @@ schema = BikaSchema.copy() + Schema((
     DateTimeField(
         'DateExpiration',
         mode="rw",
-        min="DateSampled",
-        max="current",
         read_permission=View,
         write_permission=FieldEditDateReceived,
         widget=DateTimeWidget(
@@ -1114,7 +1112,6 @@ schema = BikaSchema.copy() + Schema((
     DateTimeField(
         'Datemanufactured',
         mode="rw",
-        min="DateSampled",
         max="current",
         read_permission=View,
         write_permission=FieldEditDateReceived,
