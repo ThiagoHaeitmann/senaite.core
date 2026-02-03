@@ -1,0 +1,77 @@
+/* Sticker Dimensions: 60mm x 30mm 
+Ajustado para modo Landscape
+*/
+
+.sticker {
+    margin: 0 auto;
+    padding: 0.5mm; /* Reduzido para ganhar espaço útil */
+    width: 59mm;    /* 60mm - margens */
+    height: 29mm;   /* 30mm - margens */
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 6.5pt; /* Reduzido levemente para caber as 8 linhas */
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Container da Tabela de Informações */
+table.info-container {
+    width: 100%;
+    height: auto; /* Deixa o conteúdo ditar a altura, limitado pelo sticker */
+    border-collapse: collapse;
+    table-layout: fixed; /* Força o respeito às larguras de coluna */
+}
+
+table.info-container th {
+    text-align: left;
+    font-weight: bold;
+    border: 0.2pt solid #ccc;
+    padding: 0.3mm 0.5mm;
+    width: 25%; /* Ajuste proporcional para rótulos */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+table.info-container td {
+    border: 0.2pt solid #ccc;
+    padding: 0.3mm 0.5mm;
+    text-align: left;
+    word-wrap: break-word;
+    font-size: 6pt;
+}
+
+/* Rodapé com Logo, Barcode e QR */
+.footer-container {
+    border: none !important;
+    padding-top: 1mm !important;
+}
+
+.footer-container table {
+    width: 100%;
+    border: none !important;
+}
+
+.footer-container td {
+    border: none !important;
+    vertical-align: middle !important;
+    padding: 0 !important;
+}
+
+.barcode {
+    margin: 0 auto;
+    width: 90%;
+}
+
+/* Configuração de Impressão */
+@media print {
+    @page {
+        size: 60mm 30mm;
+        margin: 0;
+    }
+    html, body {
+        width: 60mm;
+        height: 30mm;
+        margin: 0;
+        padding: 0;
+    }
+}
