@@ -1111,6 +1111,21 @@ schema = BikaSchema.copy() + Schema((
         ),
     ),
 
+    DateTimeField(
+        'Datemanufactured',
+        mode="rw",
+        min="DateSampled",
+        max="current",
+        read_permission=View,
+        write_permission=FieldEditDateReceived,
+        widget=DateTimeWidget(
+            label=_("Data de Fabricação da Amostra"),
+            show_time=True,
+            description=_("Insira a data de fabricação da amostra localizada na etiqueta/carta de encaminhamento"),
+            render_own_label=True,
+        ),
+    ),
+
     ComputedField(
         'DatePublished',
         mode="r",
