@@ -55,7 +55,7 @@ class IContactSchema(IPersonSchema):
         "publication_preference",
         label=_(
             u"label_publication_preference",
-            default=u"Publication preference"
+            default=u"Preferência para Publicação"
         ),
         fields=[
             "cc_contact",
@@ -68,18 +68,18 @@ class IContactSchema(IPersonSchema):
         catalog=CONTACT_CATALOG,
         query="get_widget_cccontact_query",
         columns=[
-            {"name": "getFullname", "label": _("Name")},
-            {"name": "getEmailAddress", "label": _("Email")},
+            {"name": "getFullname", "label": _("Nome")},
+            {"name": "getEmailAddress", "label": _("E-mail")},
         ],
     )
     cc_contact = UIDReferenceField(
         title=_(
             u"label_contact_cccontact",
-            default=u"Contacts to CC"
+            default=u"Contatos para CC"
         ),
         description=_(
             u"description_contact_cccontact",
-            default=u"Contacts in CC for new samples"
+            default=u"Contatos em CC para novas amostras"
         ),
         allowed_types=("Contact",),
         multi_valued=True,
