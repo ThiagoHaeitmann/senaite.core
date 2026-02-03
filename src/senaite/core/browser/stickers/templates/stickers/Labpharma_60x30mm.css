@@ -40,10 +40,15 @@ table.info-container td {
     font-size: 6pt;
 }
 
+table.info-container td, table.info-container th {
+    line-height: 0.9; /* Compacta as linhas verticalmente */
+}
+
 /* Rodapé com Logo, Barcode e QR */
 .footer-container {
     border: none !important;
     padding-top: 1mm !important;
+    vertical-align: bottom;
 }
 
 .footer-container table {
