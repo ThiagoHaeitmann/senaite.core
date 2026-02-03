@@ -210,6 +210,44 @@ class IResultsReportSchema(model.Schema):
         required=False,
         default=None,
     )
+    report_number = TextLineField(
+    title=_(u"N° do Relatório"),
+    description=_(u"Número de relatório"),
+    required=True,
+    )
+    
+    report_revision = TextLineField(
+        title=_(u"Revisão"),
+        description=_(u"N° Da Revisão"),
+        required=True,
+        default=u"00",
+    )
+    
+    issue_date = DatetimeField(
+        title=_(u"Data de Emissão"),
+        description=_(u"Data de quando o relatório foi emitido"),
+        required=True,
+    )
+    
+    revision_reason = schema.Text(
+        title=_(u"Motivo de Revisão"),
+        description=_(u"Descreva o motivo da revisão do relatório"),
+        required=False,
+    )
+
+    model.fieldset(
+        "governance",
+        label=_(u"Governança de Relatórios"),
+        fields=[
+            "report_number",
+            "report_revision",
+            "issue_date",
+            "revision_reason",
+        ]
+    )
+
+    directives.mode(report_number="display")
+    directives.mode(report_revision="display")
 
     # Advanced fields
     model.fieldset(
