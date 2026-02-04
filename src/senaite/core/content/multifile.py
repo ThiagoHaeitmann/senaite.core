@@ -70,7 +70,7 @@ class IMultifileSchema(model.Schema):
         ),
         description=_(
             u"description_multifile_document_location",
-            default=u"Localização de onde este documento é controlado formalmente (Ex.: LIMS, ERP, ou outra ferramenta ofcial, ou lugar físico - caso seja Scanner)"
+            default=u"Localização de onde este documento é controlado formalmente (Ex.: LIMS, ERP, ou outra ferramenta oficial, ou lugar físico - caso seja Scanner)"
         ),
         required=False,
     )
