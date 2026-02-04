@@ -1,79 +1,75 @@
-/* Sticker Dimensions: 60mm x 30mm */
+/* Sticker Base */
 .sticker {
-    margin: 0 auto;
-    padding: 1mm; 
-    width: 60mm;
-    height: 30mm;
-    font-family: Helvetica, Arial, sans-serif;
-    overflow: hidden;
+    margin: 0 !important;
+    padding: 1.5mm !important;
+    width: 60mm !important;
+    height: 30mm !important;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+    display: block;
+    overflow: hidden;
+    background: white;
+    font-family: Arial, sans-serif;
 }
 
-/* Tabela de Informações (Corpo) */
+/* Corpo da Tabela */
 table.info-container {
-    width: 100%;
+    width: 100% !important;
     border-collapse: collapse;
     table-layout: fixed;
-    /* Deixa espaço para o rodapé embaixo */
     margin-bottom: 1mm;
 }
 
-table.info-container th {
-    text-align: left;
-    font-weight: bold;
-    border: 0.1pt solid #ccc;
-    padding: 0.2mm 0.5mm;
-    width: 20%; /* Rótulos menores para sobrar espaço para o dado */
+table.info-container th, table.info-container td {
+    border: 0.1pt solid #ccc !important;
     font-size: 5pt;
-    white-space: nowrap;
-}
-
-table.info-container td {
-    border: 0.1pt solid #ccc;
-    padding: 0.2mm 0.5mm;
-    font-size: 5.5pt;
-    white-space: nowrap;
+    line-height: 1.1;
+    padding: 0.2mm 0.4mm;
     overflow: hidden;
-    text-overflow: ellipsis; /* Corta texto longo com ... */
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-/* Rodapé Técnico (Logo, Barcode, QR) */
-.footer-container {
-    width: 100%;
-    height: 8mm; 
-    margin-top: auto; 
-    vertical-align: middle !important;
+table.info-container th {
+    width: 25%;
+    text-align: left;
+    background-color: #f9f9f9;
 }
 
-.footer-container table {
-    width: 100%;
-    height: 100%;
+/* Rodapé */
+.footer-table {
+    width: 100% !important;
     border: none !important;
+    margin-top: 1mm;
 }
 
-.logo-img {
-    max-height: 6mm !important;
-    width: auto !important;
+.footer-table td {
+    border: none !important;
     vertical-align: middle;
 }
 
-.barcode-wrapper {
-    text-align: center;
-    vertical-align: middle !important;
+/* Controle da Imagem da Logo */
+.logo-img {
+    max-height: 8mm !important;
+    max-width: 100% !important;
+    width: auto !important;
+    display: block;
 }
 
-table.info-container th, table.info-container td {
-    border: 0.1pt solid #ccc;
-    line-height: 1.1;
-    padding: 0.2mm 0.5mm;
+.footer-logo { width: 20%; }
+.footer-barcode { width: 60%; text-align: center; }
+.footer-qrcode { width: 20%; text-align: right; }
+
+.footer-barcode small {
+    font-size: 4pt;
+    display: block;
+    margin-top: -1mm;
 }
 
-/* Configuração de Impressão */
+/* Reset de Impressão */
 @media print {
     @page {
         size: 60mm 30mm;
-        margin: 0;
+        margin: 0 !important;
     }
+    body { margin: 0 !important; }
 }
