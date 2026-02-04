@@ -1,7 +1,5 @@
 <tal:sticker define="item python:view.current_item;
                      sample_id item/getId;
-                     sample_point item/getSamplePointTitle|nothing;
-                     sample_type item/getSampleTypeTitle|nothing;
                      date_sampled python:view.ulocalized_time(item.getDateSampled());
                      date_expiration python:view.ulocalized_time(item.getField('DateExpiration').get(item)) if item.getField('DateExpiration').get(item) else '';
                      date_manufactured python:view.ulocalized_time(item.getField('Datemanufactured').get(item)) if item.getField('Datemanufactured').get(item) else '';
@@ -27,20 +25,14 @@
     <tr>
       <th i18n:translate="">Dt. Amostr.:</th>
       <td tal:content="date_sampled"/>
-      <th i18n:translate="">Amostr.:</th>
-      <td tal:content="sample_point"/>
+      <th i18n:translate="">Cond. Amb.:</th>
+      <td tal:content="preservation"/>
     </tr>
     <tr>
       <th i18n:translate="">Nome:</th>
       <td tal:content="client_sample_id"/>
       <th i18n:translate="">Orçamento:</th>
       <td tal:content="client_order_num"/>
-    </tr>
-    <tr>
-      <th i18n:translate="">Tipo:</th>
-      <td tal:content="sample_type"/>
-      <th i18n:translate="">Cond. Amb.:</th>
-      <td tal:content="preservation"/>
     </tr>
     <tr>
       <th i18n:translate="">Lote Cli.:</th>
