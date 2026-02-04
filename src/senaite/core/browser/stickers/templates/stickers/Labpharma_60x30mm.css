@@ -42,8 +42,9 @@ table.info-container td {
 /* Rodapé Técnico (Logo, Barcode, QR) */
 .footer-container {
     width: 100%;
-    height: 8mm; /* Altura fixa para garantir que caiba nos 30mm */
-    margin-top: auto; /* Empurra para o final do sticker */
+    height: 8mm; 
+    margin-top: auto; 
+    vertical-align: middle !important;
 }
 
 .footer-container table {
@@ -53,12 +54,20 @@ table.info-container td {
 }
 
 .logo-img {
-    max-height: 6mm; /* Trava a logo para não crescer demais */
-    width: auto;
+    max-height: 6mm !important;
+    width: auto !important;
+    vertical-align: middle;
 }
 
 .barcode-wrapper {
     text-align: center;
+    vertical-align: middle !important;
+}
+
+table.info-container th, table.info-container td {
+    border: 0.1pt solid #ccc;
+    line-height: 1.1;
+    padding: 0.2mm 0.5mm;
 }
 
 /* Configuração de Impressão */
