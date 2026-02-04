@@ -1,97 +1,65 @@
+/* Estilos para a Régua (ajuda na calibração inicial) */
 #sticker-rule {
   color: #333;
   height: 10mm;
   margin: 0 auto;
   overflow: hidden;
-  display: none;
+  display: flex; /* Mudado para flex para alinhar melhor */
 }
 
-.sticker-rule-tick,
-.sticker-rule-tick-odd {
-  display: table-cell;
+.sticker-rule-tick, .sticker-rule-tick-odd {
   width: 10mm;
-  min-width:10mm;
-  max-width:10mm;
+  min-width: 10mm;
   font-size: 6pt;
+  text-align: center;
 }
 
-.sticker-rule-tick {
-  border-top: 2px solid #666;
-}
+.sticker-rule-tick { border-top: 2px solid #666; }
+.sticker-rule-tick-odd { border-top: 1px dotted #666; }
 
-.sticker-rule-tick-odd {
-  border-top: 1px dotted #666;
-}
-
+/* O CONTAINER DA ETIQUETA - RIGOROSO */
 .sticker {
-  margin: 0 auto;
+  margin: 0 auto !important;
   background-color: #fff;
   border: none !important; 
   box-shadow: none !important;
-  width: 60mm;
-  height: 30mm;
+  width: 60mm !important;
+  height: 30mm !important;
   overflow: hidden;
   box-sizing: border-box;
+  position: relative;
+  page-break-inside: avoid;
+  page-break-after: always;
 }
 
-.barcode-hri {
-  clear: both;
-  width: 100%;
-  background-color: #fff;
-  color: #000;
-  text-align: center;
-  font-size: 8px;
-}
-
+/* AJUSTES DE IMPRESSÃO - PARA MATAR A MARGEM ESQUERDA */
 @media print {
+  @page {
+    size: 60mm 30mm;
+    margin: 0 !important;
+  }
+
   html, body {
     margin: 0 !important;
     padding: 0 !important;
-    background-color: #fff !important;
-    width: 60mm;
-    height: 30mm;
+    width: 60mm !important;
+    height: 30mm !important;
   }
 
-  #sticker-preview-header {
+  #sticker-preview-header, #sticker-rule {
     display: none !important;
   }
 
   #stickers-wrapper {
-    margin: 0;
-    padding: 0 !important;
-  }
-
-  .sticker {
     margin: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-    page-break-inside: avoid;
+    padding: 0 !important;
+    width: 60mm !important;
   }
 
-  .page-break, .page-break-after, .page-break-before {
-    display: block !important;
-    border: none !important;
+  /* Remove qualquer espaço que o Plone/SENAITE injete */
+  .container, .row, .col {
     padding: 0 !important;
     margin: 0 !important;
-    background-color: transparent !important;
-  }
-
-  div.page-break,
-  div.page-break-after {
-    page-break-after: always;
-  }
-
-  div.page-break-before {
-    page-break-before: always;
-  }
-
-  #sticker-rule {
-    display: none !important;
-  }
-
-  .page-break, .page-break-after, .page-break-before {
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    max-width: 100% !important;
   }
 }
