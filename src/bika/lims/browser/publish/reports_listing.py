@@ -70,7 +70,7 @@ class ReportsListingView(ListingView):
                 "title": "",
                 "toggle": True},),
             ("ReportNumber", {
-                "title": _("Report No.")},),
+                "title": _("N°")},),
             ("Revision", {
                 "title": _("Rev.")},),
             ("AnalysisRequest", {
