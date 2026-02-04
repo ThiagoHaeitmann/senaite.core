@@ -3,84 +3,68 @@
                      date_sampled python:view.ulocalized_time(item.getDateSampled());
                      date_expiration python:view.ulocalized_time(item.getField('DateExpiration').get(item)) if item.getField('DateExpiration').get(item) else '';
                      date_manufactured python:view.ulocalized_time(item.getField('Datemanufactured').get(item)) if item.getField('Datemanufactured').get(item) else '';
-                     sampling_date python:view.ulocalized_time(item.getSamplingDate());
                      client_sample_id item/getClientSampleID|nothing;
                      client_order_num item/getClientOrderNumber|nothing; 
                      client_lot python:item.getField('LotClient').get(item) if item.getField('LotClient') else '';
                      internal_batch item/getBatchID|nothing;
                      preservation python:item.getEnvironmentalConditions();
-                     analyses python:item.getAnalyses(full_objects=True);
                      hazardous python: 'Sim' if item.getHazardous() else 'Não';
                      destination python: 'Sim' if (item.getField('destinationSample') and item.getField('destinationSample').get(item)) else 'Não';
-                     unicSample python: 'Sim' if (item.getField('unicSample') and item.getField('unicSample').get(item)) else 'Não';
-                     field_analyses python:[analysis for analysis in analyses if analysis.getPointOfCapture()=='field'];">
+                     unicSample python: 'Sim' if (item.getField('unicSample') and item.getField('unicSample').get(item)) else 'Não';">
 
-  <table cellpadding="0" cellspacing="0" class="info-container">
-    <tr>
-      <th i18n:translate="">ID Amostra:</th>
-      <td><strong tal:content="string:${sample_id}"/></td>
-      <th i18n:translate="">Perigo:</th>
-      <td tal:content="hazardous"/>
-    </tr>
-    <tr>
-      <th i18n:translate="">Dt. Amostr.:</th>
-      <td tal:content="date_sampled"/>
-      <th i18n:translate="">Cond. Amb.:</th>
-      <td tal:content="preservation"/>
-    </tr>
-    <tr>
-      <th i18n:translate="">Nome:</th>
-      <td tal:content="client_sample_id"/>
-      <th i18n:translate="">Orçamento:</th>
-      <td tal:content="client_order_num"/>
-    </tr>
-    <tr>
-      <th i18n:translate="">Lote Cli.:</th>
-      <td tal:content="client_lot"/>
-      <th i18n:translate="">Lote Int.:</th>
-      <td tal:content="internal_batch"/>
-    </tr>
-    <tr>
-      <th i18n:translate="">Val.:</th>
-      <td tal:content="date_expiration"/>
-      <th i18n:translate="">Fab.:</th>
-      <td tal:content="date_manufactured"/>
-    </tr>
-    <tr>
-      <th i18n:translate="">Devolução:</th>
-      <td tal:content="destination"/>
-      <th i18n:translate="">Am. Única:</th>
-      <td tal:content="unicSample"/>
-    </tr>
-    <tr>
-      <td colspan="4" class="footer-container" style="border:none !important;">
-        <table width="100%" style="border: none !important;">
-          <tr>
-            <td style="width: 20%; text-align: left; border: none !important;">
-              <img src="data:image/jpeg;base64,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" 
-            </td>
+  <div class="sticker">
+    <table class="info-container">
+      <tr>
+        <th>ID Amostra:</th>
+        <td><strong tal:content="sample_id"/></td>
+        <th>Perigo:</th>
+        <td tal:content="hazardous"/>
+      </tr>
+      <tr>
+        <th>Dt. Amostr.:</th>
+        <td tal:content="date_sampled"/>
+        <th>Cond. Amb.:</th>
+        <td tal:content="preservation"/>
+      </tr>
+      <tr>
+        <th>Nome:</th>
+        <td tal:content="client_sample_id"/>
+        <th>Orçamento:</th>
+        <td tal:content="client_order_num"/>
+      </tr>
+      <tr>
+        <th>Lote Cli.:</th>
+        <td tal:content="client_lot"/>
+        <th>Lote Int.:</th>
+        <td tal:content="internal_batch"/>
+      </tr>
+      <tr>
+        <th>Val.:</th>
+        <td tal:content="date_expiration"/>
+        <th>Fab.:</th>
+        <td tal:content="date_manufactured"/>
+      </tr>
+      <tr>
+        <th>Devolução:</th>
+        <td tal:content="destination"/>
+        <th>Am. Única:</th>
+        <td tal:content="unicSample"/>
+      </tr>
+    </table>
 
-            <td style="width: 60%; text-align: center; border: none !important;" class="barcode-wrapper">
-              <div class="barcode"
-                   tal:attributes="data-id sample_id;"
-                   data-barHeight="8" 
-                   data-code="code128"
-                   data-showHRI="false">
-              </div>
-              <small style="font-size: 4pt; display: block; margin-top: -1px;" tal:content="sample_id"></small>
-            </td>
-
-            <td style="width: 20%; text-align: right; border: none !important;">
-              <div class="qrcode"
-                   data-size="22"
-                   data-render="image"
-                   tal:attributes="data-text sample_id;">
-              </div>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
+    <table class="footer-table">
+      <tr>
+        <td class="footer-logo">
+          <img class="logo-img" src="data:image/jpeg;base64,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" />
+        </td>
+        <td class="footer-barcode">
+          <div class="barcode" tal:attributes="data-id sample_id;" data-barHeight="10" data-code="code128" data-showHRI="false"></div>
+          <small tal:content="sample_id"></small>
+        </td>
+        <td class="footer-qrcode">
+          <div class="qrcode" data-size="25" data-render="image" tal:attributes="data-text sample_id;"></div>
+        </td>
+      </tr>
+    </table>
+  </div>
 </tal:sticker>
-<tr>
