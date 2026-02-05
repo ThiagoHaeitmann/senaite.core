@@ -1,14 +1,18 @@
 /* Sticker Base */
 .sticker {
-    margin: 0 !important;
-    padding: 1.5mm !important;
     width: 60mm !important;
     height: 30mm !important;
+    padding: 1mm 1.5mm !important; /* Margem interna mínima para não cortar */
+    margin: 0 !important;
     box-sizing: border-box;
-    display: block;
     overflow: hidden;
     background: white;
-    font-family: Arial, sans-serif;
+    page-break-inside: avoid !important; /* Impede quebra entre tabela e código */
+    page-break-after: always !important; /* Garante uma etiqueta por folha na impressora térmica */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Corpo da Tabela */
@@ -16,14 +20,14 @@ table.info-container {
     width: 100% !important;
     border-collapse: collapse;
     table-layout: fixed;
-    margin-bottom: 1mm;
+    margin: 0 !important;
 }
 
 table.info-container th, table.info-container td {
-    border: 0.1pt solid #ccc !important;
+    border: 0.1pt solid #ddd !important;
     font-size: 5pt;
-    line-height: 1.1;
-    padding: 0.2mm 0.4mm;
+    line-height: 1;
+    padding: 0.3mm 0.5mm;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -35,11 +39,20 @@ table.info-container th {
     background-color: #f9f9f9;
 }
 
+table.info-container th, table.info-container td {
+    border: 0.1pt solid #ddd !important;
+    font-size: 5pt;
+    line-height: 1;
+    padding: 0.3mm 0.5mm;
+}
+
 /* Rodapé */
 .footer-table {
+    height: 8mm !important; /* Trava o tamanho do rodapé para ele nunca crescer */
+    overflow: hidden;
     width: 100% !important;
     border: none !important;
-    margin-top: 1mm;
+    margin-top: 0.5mm;
 }
 
 .footer-table td {
@@ -49,15 +62,14 @@ table.info-container th {
 
 /* Controle da Imagem da Logo */
 .logo-img {
-    max-height: 8mm !important;
-    max-width: 100% !important;
+    max-height: 6mm !important;
     width: auto !important;
     display: block;
 }
 
 .footer-logo { width: 20%; }
-.footer-barcode { width: 60%; text-align: center; }
-.footer-qrcode { width: 20%; text-align: right; }
+.footer-barcode { width: 60%; text-align: center; vertical-align: bottom; }
+.footer-qrcode { max-height: 6mm !important; text-align: right; }
 
 .footer-barcode small {
     font-size: 4pt;
@@ -71,5 +83,13 @@ table.info-container th {
         size: 60mm 30mm;
         margin: 0 !important;
     }
-    body { margin: 0 !important; }
+    
+    body { 
+        margin: 0 !important; 
+    }
+
+    /* Evita que a última etiqueta gere uma folha em branco extra */
+    .sticker:last-child {
+        page-break-after: auto !important;
+    }
 }
