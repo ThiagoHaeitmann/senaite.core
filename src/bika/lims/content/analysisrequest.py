@@ -442,7 +442,6 @@ schema = BikaSchema.copy() + Schema((
     DateTimeField(
         'DateSampled',
         mode="rw",
-        max="getMaxDateSampled",
         read_permission=View,
         write_permission=FieldEditDateSampled,
         widget=DateTimeWidget(
