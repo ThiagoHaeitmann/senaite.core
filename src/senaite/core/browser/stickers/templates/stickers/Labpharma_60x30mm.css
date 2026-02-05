@@ -2,16 +2,17 @@
 .sticker {
     width: 60mm !important;
     height: 30mm !important;
-    padding: 1mm 1.5mm !important; /* Margem interna mínima para não cortar */
+    padding: 1mm !important; /* Margem interna mínima para não cortar */
     margin: 0 !important;
     box-sizing: border-box;
     overflow: hidden;
     background: white;
+    box-shadow: none !important;
     page-break-inside: avoid !important; /* Impede quebra entre tabela e código */
     page-break-after: always !important; /* Garante uma etiqueta por folha na impressora térmica */
     position: relative;
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     justify-content: space-between;
 }
 
@@ -27,7 +28,7 @@ table.info-container th, table.info-container td {
     border: 0.1pt solid #ddd !important;
     font-size: 5pt;
     line-height: 1;
-    padding: 0.3mm 0.5mm;
+    padding: 0.2mm 0.4mm;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -84,8 +85,9 @@ table.info-container th, table.info-container td {
         margin: 0 !important;
     }
     
-    body { 
-        margin: 0 !important; 
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     /* Evita que a última etiqueta gere uma folha em branco extra */
