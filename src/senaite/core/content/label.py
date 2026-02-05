@@ -37,7 +37,7 @@ class ILabelSchema(model.Schema):
     title = schema.TextLine(
         title=_(
             u"title_label_title",
-            default=u"Name"
+            default=u"Nome"
         ),
         required=True,
     )
@@ -45,7 +45,7 @@ class ILabelSchema(model.Schema):
     description = schema.Text(
         title=_(
             u"title_label_description",
-            default=u"Description"
+            default=u"Descrição"
         ),
         required=False,
     )
