@@ -81,7 +81,7 @@ class IOrganizationSchema(model.Schema):
         "addresses",
         label=_(
             u"title_addresses_tab",
-            default=u"Address"
+            default=u"Endereço"
         ),
         fields=[
             "email",
@@ -109,7 +109,7 @@ class IOrganizationSchema(model.Schema):
         "bank_details",
         label=_(
             u"title_bank_details_tab",
-            default=u"Bank Details"
+            default=u"Info Bancárias"
         ),
         fields=[
             "account_type",
