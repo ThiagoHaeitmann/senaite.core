@@ -26,7 +26,7 @@
             <!-- Country -->
             <div class="form-group row">
               <label class="col-sm-2 col-form-label" i18n:translate=""
-                     tal:attributes="for string:${fieldName}_country">Country</label>
+                     tal:attributes="for string:${fieldName}_country">País</label>
               <div class="col-sm-4">
                 <select class="form-control"
                         tal:attributes="name string:${fieldName}.country:record;
@@ -46,7 +46,7 @@
               <div class="col-sm-6" tal:condition="widget/showCopyFrom">
                 <div class="input-group input-group-sm">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" i18n:translate="">Copy from</span>
+                    <span class="input-group-text" i18n:translate="">Copiar de</span>
                   </div>
                   <select class="form-control"
                           tal:attributes="id string:${fieldName}.selection;">
@@ -65,7 +65,7 @@
             <!-- State -->
             <div class="form-group row">
               <label class="col-sm-2 col-form-label" i18n:translate=""
-                     tal:attributes="for string:${fieldName}_state">State</label>
+                     tal:attributes="for string:${fieldName}_state">Estado</label>
               <div class="col-sm-10">
                 <select class="form-control"
                         tal:attributes="name string:${fieldName}.state:record;
@@ -85,7 +85,7 @@
             <!-- District -->
             <div class="form-group row" tal:condition="widget/showDistrict">
               <label class="col-sm-2 col-form-label" i18n:translate=""
-                     tal:attributes="for string:${fieldName}_district">District</label>
+                     tal:attributes="for string:${fieldName}_district">Distrito</label>
               <div class="col-sm-10">
                 <select class="form-control"
                         tal:attributes="name string:${fieldName}.district:record;
@@ -111,7 +111,7 @@
             <!-- City -->
             <div class="form-group row" tal:condition="widget/showCity">
               <label class="col-sm-2 col-form-label" i18n:translate=""
-                     tal:attributes="for string:${fieldName}_city">City</label>
+                     tal:attributes="for string:${fieldName}_city">Cidade</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control"
                        tal:attributes="value city;
@@ -123,7 +123,7 @@
             <!-- Postal Code -->
             <div class="form-group row" tal:condition="widget/showPostalCode">
               <label class="col-sm-2 col-form-label" i18n:translate=""
-                     tal:attributes="for string:${fieldName}_zip">Postal code</label>
+                     tal:attributes="for string:${fieldName}_zip">CEP</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control"
                        tal:attributes="value zip;
@@ -134,7 +134,7 @@
 
             <!-- Address -->
             <div class="form-group row" tal:condition="widget/showAddress">
-              <label class="col-sm-2 col-form-label" i18n:translate="">Address</label>
+              <label class="col-sm-2 col-form-label" i18n:translate="">Endereço</label>
               <div class="col-sm-10">
                 <textarea class="form-control" rows="3"
                           tal:attributes="name string:${fieldName}.address:record;
