@@ -2,7 +2,7 @@
 .sticker {
     width: 60mm !important;
     height: 30mm !important;
-    padding: 1.5mm !important; /* Aumentado levemente para evitar corte da cabeça de impressão */
+    padding: 1.5mm !important;
     margin: 0 !important;
     box-sizing: border-box;
     overflow: hidden;
@@ -12,7 +12,6 @@
     page-break-after: always !important;
     display: flex !important;
     flex-direction: column !important;
-    /* justify-content: space-between removido para usar margin-top: auto no footer */
 }
 
 /* Corpo da Tabela */
@@ -33,7 +32,7 @@ table.info-container th {
 table.info-container th, 
 table.info-container td {
     border: 0.1pt solid #ddd !important;
-    font-size: 5.5pt; /* Aumentado levemente para legibilidade GxP */
+    font-size: 5.5pt; 
     line-height: 1.1;
     padding: 0.3mm 0.5mm;
     overflow: hidden;
@@ -41,39 +40,36 @@ table.info-container td {
     text-overflow: ellipsis;
 }
 
-/* Rodapé (Flexbox para alinhar Logo e Barcode) */
-/* Se você estiver usando a <div> flex que postou antes, use este seletor: */
-.sticker > div:last-child {
+/* Rodapé Dinâmico */
+.footer-container {
     display: flex !important;
     align-items: flex-end;
     justify-content: space-between;
     width: 100% !important;
     height: 8mm !important;
-    margin-top: auto !important; /* MÁGICA: Empurra para o fim da etiqueta */
+    margin-top: auto !important; /* Mantém no pé da etiqueta */
     padding-bottom: 0.5mm;
 }
 
-/* Controle da Imagem da Logo */
 .logo-img {
-    max-height: 7mm !important; /* Aproveitando melhor os 8mm do rodapé */
+    max-height: 7mm !important;
     width: auto !important;
     display: block;
 }
 
-/* Distribuição de Espaço sem QR Code */
 .footer-logo { flex: 0 0 20%; }
 .footer-barcode { 
     flex: 1; 
     text-align: center; 
 }
 
-/* Estilização do ID sob o código de barras */
-.footer-barcode span, 
-.footer-barcode small {
+/* Texto do ID sob o código */
+.footer-barcode span {
     font-size: 4.5pt !important;
     display: block;
     margin-top: -0.5mm;
     font-weight: bold;
+    text-align: center;
 }
 
 .barcode {
