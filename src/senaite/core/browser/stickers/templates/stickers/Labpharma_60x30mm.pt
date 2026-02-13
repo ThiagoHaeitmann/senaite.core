@@ -67,14 +67,6 @@
              data-showHRI="false"></div>
         <span style="font-size: 4pt; display: block; margin-top: -1mm;" tal:content="sample_id"></span>
       </div>
-
-      <div style="flex: 0 0 15%; text-align: right;">
-        <div class="qrcode" 
-             data-size="22" 
-             data-render="image" 
-             tal:attributes="data-text sample_id;"></div>
-      </div>
-
     </div>
   </div>
 </tal:sticker>
