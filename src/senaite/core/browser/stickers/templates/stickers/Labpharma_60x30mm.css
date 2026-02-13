@@ -1,17 +1,17 @@
-/* Sticker Base */
+/* Sticker Base - Labpharma 60x30mm */
 .sticker {
-    width: 60mm !important;
-    height: 30mm !important;
-    padding: 1.5mm !important;
-    margin: 0 !important;
-    box-sizing: border-box;
-    overflow: hidden;
+    margin: 0 auto !important; /* Centraliza na visualização */
+    padding: 1mm !important;
+    width: 58mm !important;  /* 60mm menos paddings */
+    height: 28mm !important; /* 30mm menos paddings - EVITA QUEBRA */
+    font-family: Helvetica, Arial, sans-serif;
     background: white;
-    box-shadow: none !important;
-    page-break-inside: avoid !important;
-    page-break-after: always !important;
+    overflow: hidden;
+    box-sizing: border-box;
     display: flex !important;
     flex-direction: column !important;
+    page-break-inside: avoid !important;
+    page-break-after: always !important;
 }
 
 /* Corpo da Tabela */
@@ -19,77 +19,74 @@ table.info-container {
     width: 100% !important;
     border-collapse: collapse;
     table-layout: fixed;
-    margin: 0 !important;
-}
-
-table.info-container th {
-    width: 25%;
-    text-align: left;
-    background-color: #f9f9f9;
-    font-weight: bold;
+    font-size: 5.5pt;
+    line-height: 1.1;
 }
 
 table.info-container th, 
 table.info-container td {
-    border: 0.1pt solid #ddd !important;
-    font-size: 5.5pt; 
-    line-height: 1.1;
+    border: 0.1pt solid #888 !important; /* Igual ao padrão da Code 39 */
     padding: 0.3mm 0.5mm;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-/* Rodapé Dinâmico */
+table.info-container th {
+    width: 25%;
+    text-align: left;
+    background-color: #f9f9f9;
+}
+
+/* Rodapé Dinâmico (Logo + Barcode) */
 .footer-container {
     display: flex !important;
     align-items: flex-end;
     justify-content: space-between;
     width: 100% !important;
     height: 8mm !important;
-    margin-top: auto !important; /* Mantém no pé da etiqueta */
+    margin-top: auto !important; /* Cola no fundo sem forçar quebra */
     padding-bottom: 0.5mm;
 }
 
+.footer-logo { flex: 0 0 20%; text-align: left; }
+.footer-barcode { flex: 1; text-align: center; }
+
 .logo-img {
-    max-height: 7mm !important;
+    max-height: 6mm !important;
     width: auto !important;
     display: block;
 }
 
-.footer-logo { flex: 0 0 20%; }
-.footer-barcode { 
-    flex: 1; 
-    text-align: center; 
-}
-
-/* Texto do ID sob o código */
-.footer-barcode span {
-    font-size: 4.5pt !important;
-    display: block;
-    margin-top: -0.5mm;
-    font-weight: bold;
-    text-align: center;
-}
-
 .barcode {
+    margin: 0 auto;
     width: 100% !important;
     display: flex;
     justify-content: center;
 }
 
-/* Reset de Impressão */
+.footer-barcode span {
+    font-size: 4.5pt !important;
+    display: block;
+    margin-top: -0.5mm;
+    font-weight: bold;
+}
+
+/* Reset de Impressão Radical */
 @media print {
     @page {
-        size: 60mm 30mm;
-        margin: 0 !important;
+        size: 60mm 30mm !important;
+        margin: 0mm !important;
     }
     html, body {
+        width: 60mm !important;
+        height: 30mm !important;
         margin: 0 !important;
         padding: 0 !important;
-        background: none;
+        background: none !important;
     }
-    .sticker:last-child {
-        page-break-after: auto !important;
+    .sticker {
+        margin: 0 !important;
+        border: none !important;
     }
 }
