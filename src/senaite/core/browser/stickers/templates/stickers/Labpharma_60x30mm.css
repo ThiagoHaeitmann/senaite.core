@@ -1,7 +1,7 @@
 /* Sticker Base - Labpharma 60x30mm */
 .sticker {
     margin: 0 auto !important; /* Centraliza na visualização */
-    padding: 1mm !important;
+    padding: 0.5mm !important;
     width: 58mm !important;  /* 60mm menos paddings */
     height: 28mm !important; /* 30mm menos paddings - EVITA QUEBRA */
     font-family: Helvetica, Arial, sans-serif;
@@ -26,7 +26,7 @@ table.info-container {
 table.info-container th, 
 table.info-container td {
     border: 0.1pt solid #888 !important; /* Igual ao padrão da Code 39 */
-    padding: 0.3mm 0.5mm;
+    padding: 0.2mm 0.4mm;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -44,16 +44,16 @@ table.info-container th {
     align-items: flex-end;
     justify-content: space-between;
     width: 100% !important;
-    height: 8mm !important;
+    height: 7mm !important;
     margin-top: auto !important; /* Cola no fundo sem forçar quebra */
     padding-bottom: 0.5mm;
 }
 
-.footer-logo { flex: 0 0 20%; text-align: left; }
+.footer-logo { flex: 0 0 15%; text-align: left; }
 .footer-barcode { flex: 1; text-align: center; }
 
 .logo-img {
-    max-height: 6mm !important;
+    max-height: 5.5mm !important;
     width: auto !important;
     display: block;
 }
@@ -88,5 +88,7 @@ table.info-container th {
     .sticker {
         margin: 0 !important;
         border: none !important;
+        page-break-after: avoid !important; /* Evita forçar próxima página */
+        page-break-inside: avoid !important;
     }
 }
