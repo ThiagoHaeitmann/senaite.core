@@ -1079,6 +1079,7 @@ schema = BikaSchema.copy() + Schema((
             },
         )
     ),
+    
 
     DateTimeField(
         'DateReceived',
@@ -1121,6 +1122,39 @@ schema = BikaSchema.copy() + Schema((
             render_own_label=True,
         ),
     ),
+
+    DateTimeField(
+        'DateExit',
+        mode="rw",
+        read_permission=View,
+        write_permission=FieldEditDateReceived,
+        widget=DateTimeWidget(
+            label=_("Data de Saída"),
+            show_time=True,
+            description=_("Insira a data de saída da amostra para o laboratório"),
+            render_own_label=True,
+        ),
+    ),
+
+    StringField(
+        'AnalystExit',
+        mode="rw",
+        read_permission=View,
+        write_permission=FieldEditSampler,
+        vocabulary='getAnalysts',
+        widget=BikaSelectionWidget(
+            format='select',
+            label=_("Retirado por"),
+            description=_("Analista ao qual as amostras foram entregues"),
+            # see SamplingWOrkflowWidgetVisibility
+            visible={
+                'add': 'edit',
+                'header_table': 'prominent',
+            },
+            render_own_label=True,
+        ),
+    ),
+    
 
     ComputedField(
         'DatePublished',
@@ -2193,6 +2227,9 @@ class AnalysisRequest(BaseFolder, ClientAwareMixin):
 
     def getSamplers(self):
         return getUsers(self, ['Sampler', ])
+
+    def getAnalysts(self):
+        return getUsers(self, ['Analyst', 'LabManager'])
 
     def getPreservers(self):
         return getUsers(self, ['Preserver', 'Sampler'])
