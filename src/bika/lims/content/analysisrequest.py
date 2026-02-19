@@ -932,7 +932,7 @@ schema = BikaSchema.copy() + Schema((
 
     StringField(
         'Priority',
-        default='3',
+        default='4',
         vocabulary=PRIORITIES,
         mode='rw',
         read_permission=View,
