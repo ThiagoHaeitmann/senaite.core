@@ -10,7 +10,6 @@
     box-sizing: border-box;
     display: block !important;
     position: relative;
-    page-break-inside: avoid !important;
 }
 
 /* Corpo da Tabela */
@@ -61,7 +60,7 @@ table.info-container th {
 .barcode {
     margin: 0 auto;
     width: 100% !important;
-    display: flex;
+    display: inline-block;
     justify-content: center;
 }
 
