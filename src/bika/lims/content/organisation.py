@@ -183,6 +183,32 @@ class Organisation(ATFolder):
         field = self.getField("EmailAddress")
         field.set(self, value)
 
+    def _normalize_address(self, value):
+        if not isinstance(value, dict):
+            return value
+    
+        normalized = {}
+        for k, v in value.items():
+            if isinstance(v, text_type):
+                normalized[k] = v.encode("utf-8")
+            else:
+                normalized[k] = v
+        return normalized
+
+    def setPhysicalAddress(self, value):
+        value = self._normalize_address(value)
+        field = self.getField("PhysicalAddress")
+        field.set(self, value)
+
+    def setPostalAddress(self, value):
+        value = self._normalize_address(value)
+        field = self.getField("PostalAddress")
+        field.set(self, value)
+
+    def setBillingAddress(self, value):
+        value = self._normalize_address(value)
+        field = self.getField("BillingAddress")
+        field.set(self, value)
 
     def Title(self):
         """Return the name of the Organisation
