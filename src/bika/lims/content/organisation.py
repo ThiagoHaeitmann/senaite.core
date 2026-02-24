@@ -34,8 +34,6 @@ from bika.lims.config import PROJECTNAME
 from bika.lims.content.bikaschema import BikaFolderSchema
 from bika.lims.content.bikaschema import BikaSchema
 from bika.lims.interfaces import IOrganisation
-from six import text_type
-
 
 schema = BikaFolderSchema.copy() + BikaSchema.copy() + ManagedSchema((
 
@@ -175,40 +173,6 @@ class Organisation(ATFolder):
     security = ClassSecurityInfo()
     displayContentsTab = False
     schema = schema
-
-    def setEmailAddress(self, value):
-        """Normalize EmailAddress to str for Archetypes isEmail validator"""
-        if isinstance(value, text_type):
-            value = value.encode("utf-8")
-        field = self.getField("EmailAddress")
-        field.set(self, value)
-
-    def _normalize_address(self, value):
-        if not isinstance(value, dict):
-            return value
-    
-        normalized = {}
-        for k, v in value.items():
-            if isinstance(v, text_type):
-                normalized[k] = v.encode("utf-8")
-            else:
-                normalized[k] = v
-        return normalized
-
-    def setPhysicalAddress(self, value):
-        value = self._normalize_address(value)
-        field = self.getField("PhysicalAddress")
-        field.set(self, value)
-
-    def setPostalAddress(self, value):
-        value = self._normalize_address(value)
-        field = self.getField("PostalAddress")
-        field.set(self, value)
-
-    def setBillingAddress(self, value):
-        value = self._normalize_address(value)
-        field = self.getField("BillingAddress")
-        field.set(self, value)
 
     def Title(self):
         """Return the name of the Organisation
