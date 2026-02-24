@@ -49,7 +49,6 @@ from senaite.core.browser.fields.multiupload import MultiUploadField
 from senaite.core.browser.widgets.multiuploadwidget import MultiUploadWidget
 from senaite.core.browser.widgets.referencewidget import ReferenceWidget
 from zope.interface import implements
-from six import text_type
 
 schema = Organisation.schema.copy() + Schema((
     StringField(
@@ -444,14 +443,6 @@ class Client(Organisation):
         physical_address = self.getPhysicalAddress().get("district", default)
         postal_address = self.getPostalAddress().get("district", default)
         return physical_address or postal_address
-
-    def setEmailAddress(self, value):
-        """Override para aceitar unicode vindo da API
-        """
-        if isinstance(value, text_type):
-            value = value.encode("utf-8")
-
-        return super(Client, self).setEmailAddress(value)
 
     # TODO Security Make Attachments live inside ARs (instead of Client)
     # Since the Attachments live inside Client, we are forced here to overcome
