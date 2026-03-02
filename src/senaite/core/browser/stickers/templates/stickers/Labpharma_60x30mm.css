@@ -1,8 +1,8 @@
 .sticker {
     margin: 0 auto !important;
-    padding: 1.0mm !important;
-    width: 58mm !important; 
-    height: 28mm !important; 
+    padding: 0.5mm !important;
+    width: 57mm !important; 
+    height: 27mm !important; 
     font-family: Helvetica, Arial, sans-serif;
     background: white;
     overflow: hidden;
@@ -32,7 +32,7 @@ table.info-container th {
 
 .footer-cell {
     border: none !important;
-    padding-top: 1mm !important;
+    padding-top: 0.5mm !important;
     vertical-align: bottom;
 }
 
@@ -45,6 +45,7 @@ table.info-container th {
 .barcode {
     margin: 0 auto;
     display: block;
+    max-height: 5mm;
 }
 
 @media print {
