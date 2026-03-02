@@ -1,77 +1,52 @@
-/* Sticker Base - Labpharma 60x30mm */
 .sticker {
-    margin: 0 auto !important; /* Centraliza na visualização */
-    padding: 0.5mm !important;
-    width: 58mm !important;  /* 60mm menos paddings */
-    height: 28mm !important; /* 30mm menos paddings - EVITA QUEBRA */
+    margin: 0 auto !important;
+    padding: 1.0mm !important;
+    width: 58mm !important; 
+    height: 28mm !important; 
     font-family: Helvetica, Arial, sans-serif;
     background: white;
     overflow: hidden;
     box-sizing: border-box;
     display: block !important;
-    position: relative;
 }
 
-/* Corpo da Tabela */
 table.info-container {
     width: 100% !important;
     border-collapse: collapse;
-    table-layout: fixed;
     font-size: 5.5pt;
     line-height: 1.1;
+    table-layout: fixed;
 }
 
 table.info-container th, 
 table.info-container td {
-    border: 0.1pt solid #888 !important; /* Igual ao padrão da Code 39 */
+    border: 0.1pt solid #888 !important;
     padding: 0.2mm 0.4mm;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 table.info-container th {
     width: 25%;
     text-align: left;
-    background-color: #f9f9f9;
 }
 
-/* Rodapé Dinâmico (Logo + Barcode) */
-.footer-container {
-    position: absolute;
-    display: flex !important;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 100% !important;
-    height: 7mm !important;
-    margin-top: auto !important; /* Cola no fundo sem forçar quebra */
-    padding-bottom: 0.5mm;
+.footer-cell {
+    border: none !important;
+    padding-top: 1mm !important;
+    vertical-align: bottom;
 }
-
-.footer-logo { flex: 0 0 15%; text-align: left; }
-.footer-barcode { flex: 1; text-align: center; }
 
 .logo-img {
-    max-height: 5.5mm !important;
-    width: auto !important;
+    max-height: 5mm;
+    width: auto;
     display: block;
 }
 
 .barcode {
     margin: 0 auto;
-    width: 100% !important;
-    display: inline-block;
-    justify-content: center;
-}
-
-.footer-barcode span {
-    font-size: 4.5pt !important;
     display: block;
-    margin-top: -0.5mm;
-    font-weight: bold;
 }
 
-/* Reset de Impressão Radical */
 @media print {
     @page {
         size: 60mm 30mm !important;
@@ -81,13 +56,5 @@ table.info-container th {
         width: 60mm !important;
         height: 30mm !important;
         margin: 0 !important;
-        padding: 0 !important;
-        background: none !important;
-    }
-    .sticker {
-        margin: 0 !important;
-        border: none !important;
-        page-break-inside: avoid !important;
-        page-break-before: auto !important;
     }
 }
